@@ -30,7 +30,7 @@
         </div>
         <div class="col-auto d-none d-lg-block">
           <NuxtImg
-            :src="image"
+            :src="addHttps(image)"
             class="bd-placeholder-img image-post"
             width="200"
             height="250"
@@ -45,9 +45,13 @@
 <script setup lang="ts">
 import { formattedDateShort } from "~/utils/FormateDate";
 import { truncateText } from "@/utils/TruncateText";
+import {addHttps} from "@/utils/AddHttps"
 import { categories } from "~/categories/categories";
 const { posts } = defineProps(["posts"]);
 const arrayPostsWithoutFirst = [...posts].filter(({ id }) => id !== "1");
+
+
+
 </script>
 
 <style lang="scss">

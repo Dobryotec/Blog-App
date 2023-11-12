@@ -6,7 +6,7 @@
     >
       <div class="col-auto d-none py-4 ps-4 d-lg-block">
         <NuxtImg
-          :src="image"
+          :src="addHttps(image)"
           class="bd-placeholder-img image"
           width="400"
           height="400"
@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import { type Data } from "@/types/types";
-
+import { addHttps } from "~/utils/AddHttps";
 const { postid } = useRoute().params;
 const { data } = await useFetch<Data>(
   `https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/posts/${postid}`
