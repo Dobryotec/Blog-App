@@ -19,7 +19,7 @@
             :style="{ color: categories[index].color }"
             >{{ categories[index].category }}</strong
           >
-          <h3 class="mb-0 title">{{ title }}</h3>
+          <h3 class="mb-0 title">{{capitalizeFirstLetter(title) }}</h3>
           <div class="mb-1 text-muted">{{ formattedDateShort(createdAt) }}</div>
           <p class="card-text mb-auto">
             {{ truncateText(content) }}
@@ -44,6 +44,7 @@
 
 <script setup lang="ts">
 import { formattedDateShort } from "~/utils/FormateDate";
+import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
 import { truncateText } from "@/utils/TruncateText";
 import {addHttps} from "@/utils/AddHttps"
 import { categories } from "~/categories/categories";

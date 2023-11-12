@@ -32,7 +32,7 @@
           </svg>
           Back
         </button>
-        <h3 class="mb-0 title">{{ title }}</h3>
+        <h3 class="mb-0 title">{{ capitalizeFirstLetter(title) }}</h3>
         <div class="mb-1 text-muted">
           {{ formattedDate(createdAt) }}
         </div>
@@ -52,6 +52,7 @@
 <script setup lang="ts">
 import { type Data } from "@/types/types";
 import { addHttps } from "~/utils/AddHttps";
+import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
 const { postid } = useRoute().params;
 const { data } = await useFetch<Data>(
   `https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/posts/${postid}`
