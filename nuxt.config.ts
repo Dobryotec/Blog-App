@@ -11,7 +11,9 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  modules: ["@nuxt/image"],
-
+  modules: ["@nuxt/image", "@pinia/nuxt"],
+  pinia: {
+    storesDirs: ["./stores/**", "./custom-folder/stores/**"],
+  },
   css: ["bootstrap/scss/bootstrap.scss"],
 });

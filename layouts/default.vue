@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import "@/styles/styles.css";
+</script>
+
 <template>
   <div
     class="container"
@@ -6,71 +10,25 @@
     <div class="container">
       <header class="blog-header lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
-            <NuxtLink class="link-secondary" href="#">Subscribe</NuxtLink>
-          </div>
-          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">My Blog</a>
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-            <NuxtLink class="link-secondary" href="#" aria-label="Search">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="mx-3"
-                role="img"
-                viewBox="0 0 24 24"
-              >
-                <title>Search</title>
-                <circle cx="10.5" cy="10.5" r="7.5" />
-                <path d="M21 21l-5.2-5.2" />
-              </svg>
-            </NuxtLink>
-            <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+          <div class="text-center">
+            <NuxtLink class="blog-header-logo text-dark" to="/"
+              >My Blog</NuxtLink
+            >
           </div>
         </div>
       </header>
-
-      <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-          <NuxtLink class="p-2 link-secondary" href="#">World</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">U.S.</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Technology</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Design</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Culture</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Business</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Politics</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Opinion</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Science</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Health</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Style</NuxtLink>
-          <NuxtLink class="p-2 link-secondary" href="#">Travel</NuxtLink>
-        </nav>
-      </div>
     </div>
-
     <slot />
     <footer class="blog-footer">
       <p>
-        Blog template built for
-        <NuxtLink href="https://getbootstrap.com/">Bootstrap</NuxtLink> by
-        <NuxtLink href="https://twitter.com/mdo">@mdo</NuxtLink>.
-      </p>
-      <p>
-        <a href="#">Back to top</a>
+        <a
+          class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+          href="#"
+          >Back to top</a
+        >
       </p>
     </footer>
   </div>
 </template>
 
-<script setup lang="ts">
-import "@/styles/styles.css";
-</script>
-
-<style lang="scss"></style>
+<style lang="scss" scoped></style>

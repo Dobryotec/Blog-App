@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { type Data } from "~/types/types";
+import { truncateText } from "@/utils/TruncateText";
+import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
+
+const { posts } = defineProps<{ posts: Data[] }>();
+
+const { title, content, id } = [...posts].find(({ id }) => id === "1") as Data;
+</script>
+
 <template>
   <div>
     <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
@@ -18,18 +28,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { type Data } from "~/types/types";
-import { truncateText } from "@/utils/TruncateText";
-import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
-
-const { posts } = defineProps<{ posts: Data[] }>();
-
-const { title, content, id } = [...posts].find(({ id }) => id === "1") as Data;
-</script>
-
-<style lang="scss">
+<style lang="scss" scoped>
 .hero-link {
+  text-decoration: none;
   color: white;
   transition: all 300ms;
   &:hover {

@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { type Comments } from "@/types/types";
+
+const { data: comments } = useFetch<Comments[]>(
+  "https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/comments"
+);
+</script>
+
 <template>
   <div class="row mb-2 rounded">
     <div
@@ -30,17 +38,10 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { type Comments } from "@/types/types";
-
-const { data: comments } = useFetch<Comments[]>(
-  "https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/comments"
-);
-</script>
-
-<style lang="scss">
+<style lang="scss" scoped>
 .image {
   height: 100%;
+  object-fit: cover;
 }
 .item {
   display: flex;

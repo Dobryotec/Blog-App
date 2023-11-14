@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { type Data } from "@/types/types";
+import { addHttps } from "~/utils/AddHttps";
+import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
+
+const { postid } = useRoute().params;
+
+const { data } = await useFetch<Data>(
+  `https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/posts/${postid}`
+);
+
+const { image, createdAt, title, content } = data.value as Data;
+
+const isOpen = useState("open", () => false);
+
+onUnmounted(() => {
+  isOpen.value = false;
+});
+</script>
+
 <template>
   <div>
     <div
@@ -49,25 +69,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { type Data } from "@/types/types";
-import { addHttps } from "~/utils/AddHttps";
-import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
-const { postid } = useRoute().params;
-const { data } = await useFetch<Data>(
-  `https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/posts/${postid}`
-);
-
-const { image, createdAt, title, content } = data.value as Data;
-
-const isOpen = useState("open", () => false);
-
-onUnmounted(() => {
-  isOpen.value = false;
-});
-</script>
-
-<style lang="scss">
+<style lang="scss" scoped>
 .btn {
   width: 200px;
   &-back {

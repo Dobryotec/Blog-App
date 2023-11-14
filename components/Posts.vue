@@ -1,13 +1,21 @@
+<script setup lang="ts">
+import { formattedDateShort } from "~/utils/FormateDate";
+import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
+import { truncateText } from "@/utils/TruncateText";
+import { addHttps } from "@/utils/AddHttps";
+import { categories } from "~/categories/categories";
+
+const { posts } = defineProps(["posts"]);
+</script>
+
 <template>
   <div
     class="row mb-2 shadow p-3 mb-5 bg-body-tertiary rounded"
     :style="{ justifyContent: 'center' }"
   >
     <div
-      class="col-md-6"
-      v-for="(
-        { id, title, createdAt, image, content }, index
-      ) in arrayPostsWithoutFirst"
+      class="col-md-6 post-container"
+      v-for="{ id, title, createdAt, image, content } in posts"
       :key="id"
     >
       <div
@@ -16,10 +24,10 @@
         <div class="col p-4 d-flex flex-column position-static">
           <strong
             class="d-inline-block mb-2"
-            :style="{ color: categories[index].color }"
-            >{{ categories[index].category }}</strong
+            :style="{ color: categories[Number(id) - 1]?.color }"
+            >{{ categories[Number(id) - 1]?.category }}</strong
           >
-          <h3 class="mb-0 title">{{capitalizeFirstLetter(title) }}</h3>
+          <h3 class="mb-0 title">{{ capitalizeFirstLetter(title) }}</h3>
           <div class="mb-1 text-muted">{{ formattedDateShort(createdAt) }}</div>
           <p class="card-text mb-auto">
             {{ truncateText(content) }}
@@ -42,20 +50,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { formattedDateShort } from "~/utils/FormateDate";
-import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
-import { truncateText } from "@/utils/TruncateText";
-import {addHttps} from "@/utils/AddHttps"
-import { categories } from "~/categories/categories";
-const { posts } = defineProps(["posts"]);
-const arrayPostsWithoutFirst = [...posts].filter(({ id }) => id !== "1");
-
-
-
-</script>
-
-<style lang="scss">
+<style lang="scss" scoped>
 .link {
   text-decoration: none;
   font-weight: bold;
@@ -67,5 +62,10 @@ const arrayPostsWithoutFirst = [...posts].filter(({ id }) => id !== "1");
 }
 .image-post {
   object-fit: cover;
+}
+
+.post-container:hover {
+  transform: scale(1.05);
+  transition: transform 300ms ease;
 }
 </style>
