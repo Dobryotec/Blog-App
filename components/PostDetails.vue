@@ -16,6 +16,10 @@ const isOpen = useState("open", () => false);
 onUnmounted(() => {
   isOpen.value = false;
 });
+
+useHead({
+  title,
+});
 </script>
 
 <template>

@@ -6,6 +6,10 @@ import { addHttps } from "@/utils/AddHttps";
 import { categories } from "~/categories/categories";
 
 const { posts } = defineProps(["posts"]);
+
+useHead({
+  title: "My Blog",
+});
 </script>
 
 <template>

@@ -22,7 +22,7 @@ import "@/styles/styles.css";
     <footer class="blog-footer">
       <p>
         <a
-          class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+          class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover post-container"
           href="#"
           >Back to top</a
         >
@@ -31,4 +31,9 @@ import "@/styles/styles.css";
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.post-container:hover {
+  transform: scale(1.05);
+  transition: all 300ms ease;
+}
+</style>
