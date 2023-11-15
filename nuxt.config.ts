@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   app: {
     baseURL: "/Blog-App/",
-    buildAssetsDir: "assets",
     head: {
       script: [
         {
