@@ -22,7 +22,7 @@ const selectTab = (id: string) => {
   </nav>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .post-container:hover {
   transform: scale(1.05);
   transition: all 300ms ease;

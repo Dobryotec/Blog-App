@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { type Data } from "@/types/types";
-import { addHttps } from "~/utils/AddHttps";
-import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
+import { useData } from "~/composables/useData.js";
+import { addHttps } from "@/utils/AddHttps";
+import { capitalizeFirstLetter } from "@/utils/CapitalizeFirstLetter";
 
 const { postid } = useRoute().params;
 
-const { data } = await useFetch<Data>(
-  `https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/posts/${postid}`
+const data = await useData(
+  `https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/posts/${postid}`,
+  true
 );
 
 const { image, createdAt, title, content } = data.value as Data;
@@ -18,7 +20,7 @@ onUnmounted(() => {
 });
 
 useHead({
-  title,
+  title: `My Blog | ${title}`,
 });
 </script>
 
@@ -28,7 +30,7 @@ useHead({
       class="row g-0 row-gap-5 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-230 position-relative"
       :style="{ justifyContent: 'center' }"
     >
-      <div class="col-auto d-none py-4 ps-4 d-lg-block">
+      <div class="col-auto d-none py-4 ps-md-4 d-md-block">
         <NuxtImg
           :src="addHttps(image)"
           class="bd-placeholder-img image"
@@ -73,17 +75,16 @@ useHead({
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .btn {
   width: 200px;
-  &-back {
-    width: 100px;
-    transition: all 300ms;
-
-    &:hover {
-      background-color: gold;
-    }
-  }
+}
+.btn-back {
+  width: 100px;
+  transition: all 300ms;
+}
+.btn-back:hover {
+  background-color: gold;
 }
 .image {
   object-fit: cover;

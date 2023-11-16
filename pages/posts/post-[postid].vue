@@ -4,6 +4,4 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const { postid } = useRoute().params;
-</script>
+<script setup lang="ts"></script>

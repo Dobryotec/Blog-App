@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { type Comments } from "@/types/types";
+import { useComments } from "@/composables/useComments";
 
-const { data: comments } = useFetch<Comments[]>(
+const data = await useComments(
   "https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/comments"
 );
+
+const comments = data.value;
 </script>
 
 <template>
@@ -14,14 +16,15 @@ const { data: comments } = useFetch<Comments[]>(
       :key="id"
     >
       <div
-        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-230 position-relative"
+        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
+        :style="{ height: '140px' }"
       >
-        <div class="col-auto d-none d-lg-block">
+        <div class="col-auto d-none d-sm-block">
           <NuxtImg
             :src="avatar"
             class="bd-placeholder-img image"
             width="100"
-            height="150"
+            height="140"
           />
         </div>
         <div class="col p-4 d-flex flex-column position-static">
@@ -38,9 +41,8 @@ const { data: comments } = useFetch<Comments[]>(
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .image {
-  height: 100%;
   object-fit: cover;
 }
 .item {

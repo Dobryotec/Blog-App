@@ -31,7 +31,7 @@ import "@/styles/styles.css";
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .post-container:hover {
   transform: scale(1.05);
   transition: all 300ms ease;

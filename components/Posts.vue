@@ -7,9 +7,7 @@ import { categories } from "~/categories/categories";
 
 const { posts } = defineProps(["posts"]);
 
-useHead({
-  title: "My Blog",
-});
+
 </script>
 
 <template>
@@ -23,7 +21,8 @@ useHead({
       :key="id"
     >
       <div
-        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-230 position-relative"
+        class="row g-0 border rounded overflow-hidden flex-sm-row mb-4 shadow-sm h-md-230 position-relative"
+        :style="{ minHeight: '295px' }"
       >
         <div class="col p-4 d-flex flex-column position-static">
           <strong
@@ -36,11 +35,11 @@ useHead({
           <p class="card-text mb-auto">
             {{ truncateText(content) }}
           </p>
-          <NuxtLink :to="`/posts/${id}`" class="link"
+          <NuxtLink :to="`/posts/post-${id}`" class="link"
             >Continue reading</NuxtLink
           >
         </div>
-        <div class="col-auto d-none d-lg-block">
+        <div class="col-auto d-none d-sm-block mx-auto">
           <NuxtImg
             :src="addHttps(image)"
             class="bd-placeholder-img image-post"
@@ -54,18 +53,20 @@ useHead({
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .link {
   text-decoration: none;
   font-weight: bold;
   transition: all 300ms;
-
-  &:hover {
-    color: gold;
-  }
 }
+
+.link:hover {
+  color: gold;
+}
+
 .image-post {
   object-fit: cover;
+  height: 100%;
 }
 
 .post-container:hover {

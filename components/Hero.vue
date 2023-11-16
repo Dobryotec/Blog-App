@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Data } from "~/types/types";
-import { truncateText } from "@/utils/TruncateText";
-import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter";
+import { truncateText } from "~/utils/TruncateText.js";
+import { capitalizeFirstLetter } from "~/utils/CapitalizeFirstLetter.js";
 
 const { posts } = defineProps<{ posts: Data[] }>();
 
@@ -19,7 +19,7 @@ const { title, content, id } = [...posts].find(({ id }) => id === "1") as Data;
           {{ truncateText(content) }}
         </p>
         <p class="lead mb-0">
-          <NuxtLink :to="`/posts/${id}`" class="hero-link link fw-bold"
+          <NuxtLink :to="`/posts/post-${id}`" class="hero-link link fw-bold"
             >Continue reading...</NuxtLink
           >
         </p>
@@ -28,13 +28,14 @@ const { title, content, id } = [...posts].find(({ id }) => id === "1") as Data;
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .hero-link {
   text-decoration: none;
   color: white;
   transition: all 300ms;
-  &:hover {
+}
+.hero-link:hover {
     color: gold;
   }
-}
+
 </style>

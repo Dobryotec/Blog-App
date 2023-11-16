@@ -1,22 +1,12 @@
-<template>
-  <div class="container">
-    <div class="nav-scroller py-1 mb-2">
-      <NavBar />
-    </div>
-    <Hero :posts="posts" />
-    <Posts :posts="selectedPosts" />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { type Data } from "@/types/types";
-import { computed } from "vue";
+import { useData } from "~/composables/useData.js";
 
-const { data, pending } = await useFetch<Data[]>(
+const data = await useData(
   "https://62fe137ba85c52ee482f275b.mockapi.io/api/v1/posts"
 );
-
 const posts = data.value as Data[];
+
 const store = useStore();
 
 const selectedPosts = computed(() => {
@@ -27,3 +17,13 @@ const selectedPosts = computed(() => {
   } else return posts.filter(({ id }) => id !== "1");
 });
 </script>
+
+<template>
+  <div class="container">
+    <div class="nav-scroller py-1 mb-2">
+      <NavBar />
+    </div>
+    <Hero :posts="posts" />
+    <Posts :posts="selectedPosts" />
+  </div>
+</template>
