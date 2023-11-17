@@ -11,7 +11,7 @@ export const categories: categories[] = [
   { id: "4", category: "Technology", color: "red" },
   { id: "5", category: "Culture", color: "blue" },
   { id: "6", category: "Health", color: "violet" },
-  { id: "7", category: "Style", color: "pink" },
+  { id: "7", category: "Style", color: "turquoise" },
   { id: "8", category: "Travel", color: "purple" },
   { id: "9", category: "Science", color: "brown" },
   { id: "10", category: "Business", color: "orange" },

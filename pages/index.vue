@@ -19,11 +19,11 @@ const selectedPosts = computed(() => {
 </script>
 
 <template>
-  <div class="container">
+  <main class="container">
     <div class="nav-scroller py-1 mb-2">
       <NavBar />
     </div>
     <Hero :posts="posts" />
     <Posts :posts="selectedPosts" />
-  </div>
+  </main>
 </template>
